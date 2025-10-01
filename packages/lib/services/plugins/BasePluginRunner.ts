@@ -38,8 +38,8 @@ export default abstract class BasePluginRunner extends BaseService {
 	}
 
 	// Duration in seconds
-	public callStatsSummary(pluginId: string, duration: number): number[] {
-		const output: number[] = [];
+	public callStatsSummary(pluginId: string, duration: number): string[] {
+		const output: string[] = [];
 
 		const startTime = Math.floor(Date.now() / 1000 - duration);
 		const endTime = startTime + duration;
