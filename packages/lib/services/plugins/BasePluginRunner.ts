@@ -16,7 +16,7 @@ export default abstract class BasePluginRunner extends BaseService {
 	//     1650375620: 1,
 	//     1650375623: 4,
 	// };
-	private callStats_: Record<string, Record<number, number>> = {};
+	private callStats_: Record<string, Record<string, number>> = {};
 
 	public async run(plugin: Plugin, sandbox: Global): Promise<void> {
 		throw new Error(`Not implemented: ${plugin} / ${sandbox}`);
