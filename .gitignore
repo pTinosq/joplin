@@ -12,7 +12,6 @@ _vieux/
 .DS_Store
 *.map
 *.pro.user
-.devbox/
 *.sublime-workspace
 *.swp
 **/*.js.map
