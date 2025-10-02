@@ -46,7 +46,7 @@ export default class GoToAnything {
 			await msleep(300);
 			await this.inputLocator.fill(query);
 			try {
-				await expect(resultLocator).toBeVisible({ timeout: 1000 });
+				await expect(resultLocator).toHaveATimeout(1000);
 			} catch (error) {
 				// Return, rather than throw, the error -- expect.poll doesn't retry
 				// if the callback throws.
