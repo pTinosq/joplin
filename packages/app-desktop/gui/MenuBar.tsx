@@ -290,7 +290,7 @@ function useMenuStates(menu: any, props: Props) {
 }
 
 function useMenu(props: Props) {
-	const [menu, setMenu] = useState(null);
+	const [menu, setMenu] = useState<string>();
 	const [keymapLastChangeTime, setKeymapLastChangeTime] = useState(Date.now());
 	const [modulesLastChangeTime, setModulesLastChangeTime] = useState(Date.now());
 
