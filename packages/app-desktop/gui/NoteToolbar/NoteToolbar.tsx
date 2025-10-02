@@ -19,7 +19,7 @@ interface NoteToolbarProps {
 }
 
 function styles_(props: NoteToolbarProps) {
-	return buildStyle('NoteToolbar', props.themeId, theme => {
+	return buildStyle('NoteToolbar', props.themeId => {
 		return {
 			root: {
 				...props.style,
@@ -52,6 +52,8 @@ const mapStateToProps = (state: AppState, ownProps: ConnectProps) => {
 	const whenClauseContext = stateToWhenClauseContext(state, { windowId: ownProps.windowId });
 
 	const { editorPlugin } = getActivePluginEditorView(state.pluginService.plugins, ownProps.windowId);
+
+	const pluginCommands = pluginUtils.commandNamesFromViews(state.pluginService.plugins, 'noteToolbar');
 
 	const commands = [
 		'showSpellCheckerMenu',
