@@ -15,7 +15,7 @@ export default class GoToAnything {
 	}
 
 	public async waitFor() {
-		await this.containerLocator.waitFor();
+		this.containerLocator.waitFor();
 	}
 
 	public async open(electronApp: ElectronApplication) {
@@ -33,7 +33,7 @@ export default class GoToAnything {
 		return this.waitFor();
 	}
 
-	public resultLocator(resultText: string|RegExp) {
+	public resultLocator(resultText: string | RegExp) {
 		return this.containerLocator.getByRole('option', { name: resultText });
 	}
 
@@ -69,10 +69,10 @@ export default class GoToAnything {
 			command = `:${command}`;
 		}
 
-		await this.open(electronApp);
-		await this.inputLocator.fill(command);
-		await this.containerLocator.locator('.match-highlight').first().waitFor();
-		await this.inputLocator.press('Enter');
-		await this.expectToBeClosed();
+		this.open(electronApp);
+		this.inputLocator.fill(command);
+		this.containerLocator.locator('.match-highlight').first().waitFor();
+		this.inputLocator.press('Enter');
+		this.expectToBeClosed();
 	}
 }
