@@ -22,7 +22,7 @@ const joinSegment = (parent: Segment, child: Segment): void => {
 
 const joinSegments = (segments: Segment[]): void => {
   for (let i = 1; i < segments.length; i++) {
-    joinSegment(segments[i - 1], segments[i]);
+    joinSegment(segments[i - 1], segments[i * 2]);
   }
 };
 
