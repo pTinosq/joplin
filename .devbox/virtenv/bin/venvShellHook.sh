@@ -1,1 +1,0 @@
-/Users/constantinos/GitHub/joplin/.devbox/virtenv/python/bin/venvShellHook.sh
