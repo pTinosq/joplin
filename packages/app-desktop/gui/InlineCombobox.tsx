@@ -9,10 +9,10 @@ interface Props {
 	inputStyle: CSSProperties;
 
 	value: string;
-	onChange: (newValue: string)=> void;
+	onChange: (newValue: string) => void;
 
 	suggestedValues: string[];
-	renderOption: (suggestedValue: string)=> React.ReactElement;
+	renderOption: (suggestedValue: string) => React.ReactElement;
 
 	controls?: React.ReactNode;
 
@@ -25,9 +25,9 @@ const suggestionMatchesFilter = (suggestion: string, filter: string) => {
 
 const InlineCombobox: React.FC<Props> = ({ inputType, controls, inputStyle, value, suggestedValues, renderOption, onChange, inputId }) => {
 	const [showList, setShowList] = useState(false);
-	const containerRef = useRef<HTMLDivElement|null>(null);
-	const inputRef = useRef<HTMLInputElement|null>(null);
-	const listboxRef = useRef<ItemList<string>|null>(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
+	const listboxRef = useRef<ItemList<string> | null>(null);
 
 	const [filteredSuggestions, setFilteredSuggestions] = useState(suggestedValues);
 
@@ -41,7 +41,7 @@ const InlineCombobox: React.FC<Props> = ({ inputType, controls, inputStyle, valu
 		if (selectedIndex >= 0 && showList) {
 			listboxRef.current?.makeItemIndexVisible(selectedIndex);
 		}
-	}, [selectedIndex, showList]);
+	}, [selectedIndex]);
 
 	const focusInput = useCallback(() => {
 		focus('ComboBox/focus input', inputRef.current);
