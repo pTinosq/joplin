@@ -101,7 +101,7 @@ class RootComponent extends React.Component<Props, any> {
 		const renderContent = () => {
 			return (
 				<div>
-					<DialogTitle title={_('Confirmation')}/>
+					<DialogTitle title={_('Confirmation')} />
 					<p>{props.message}</p>
 					<DialogButtonRow
 						themeId={props.themeId}
@@ -172,11 +172,16 @@ class RootComponent extends React.Component<Props, any> {
 			<StyleSheetManager disableVendorPrefixes>
 				<ThemeProvider theme={theme}>
 					<PopupNotificationProvider>
-						<StyleSheetContainer/>
-						<MenuBar/>
-						<GlobalStyle/>
+						<StyleSheetContainer />
+						<MenuBar />
+						<GlobalStyle />
 						<WindowCommandsAndDialogs windowId={defaultWindowId} />
-						<Navigator style={navigatorStyle} screens={screens} className={`profile-${this.props.profileConfigCurrentProfileId}`} />
+						<Navigator style={{
+							width: navigatorStyle.width / 2,
+							height: navigatorStyle.height / 2,
+							display: 'flex',
+							flexDirection: 'column',
+						}} screens={screens} className={`profile-${this.props.profileConfigCurrentProfileId}`} />
 						{this.renderSecondaryWindows()}
 						{this.renderModalMessage(this.modalDialogProps())}
 					</PopupNotificationProvider>
