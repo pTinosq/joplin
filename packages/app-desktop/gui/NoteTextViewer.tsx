@@ -59,14 +59,14 @@ const usePluginMessageResponder = (webviewRef: RefObject<HTMLIFrameElement>) => 
 };
 
 const NoteTextViewer = forwardRef((props: Props, ref: ForwardedRef<NoteViewerControl>) => {
-	const [webview, setWebview] = useState<HTMLIFrameElement|null>(null);
-	const webviewRef = useRef<HTMLIFrameElement|null>(null);
+	const [webview, setWebview] = useState<HTMLIFrameElement | null>(null);
+	const webviewRef = useRef<HTMLIFrameElement | null>(null);
 	webviewRef.current = webview;
 	usePluginMessageResponder(webviewRef);
 
 	const domReadyRef = useRef(false);
-	type RemovePluginAssetsCallback = ()=> void;
-	const removePluginAssetsCallbackRef = useRef<RemovePluginAssetsCallback|null>(null);
+	type RemovePluginAssetsCallback = () => void;
+	const removePluginAssetsCallbackRef = useRef<RemovePluginAssetsCallback | null>(null);
 
 	const parentDoc = useDocument(webview);
 	const containerWindow = parentDoc?.defaultView;
@@ -175,7 +175,7 @@ const NoteTextViewer = forwardRef((props: Props, ref: ForwardedRef<NoteViewerCon
 		webview_domReadyRef.current(event);
 	};
 
-	type MessageEventListener = (event: MessageEvent)=> void;
+	type MessageEventListener = (event: MessageEvent) => void;
 	const webview_messageRef = useRef<MessageEventListener>(null);
 	webview_messageRef.current = (event: MessageEvent) => {
 		if (event.source !== webviewRef.current?.contentWindow) return;
@@ -194,16 +194,16 @@ const NoteTextViewer = forwardRef((props: Props, ref: ForwardedRef<NoteViewerCon
 
 	useEffect(() => {
 		const wv = webviewRef.current;
-		if (!wv || !containerWindow) return () => {};
+		if (!wv || !containerWindow) return () => { };
 
-		const webviewListeners: Record<string, EventListener> = {
+		const webviewListeners: Record<string | number, EventListener> = {
 			'dom-ready': (event) => webview_domReadyRef.current(event),
 			'ipc-message': (event) => webview_ipcMessageRef.current(event),
 			'load': (event) => webview_loadRef.current(event),
 		};
 
 		for (const n in webviewListeners) {
-			if (!webviewListeners.hasOwnProperty(n)) continue;
+			if (!webviewListeners.hasOwnProperty(n.toUpperCase())) continue;
 			const fn = webviewListeners[n];
 			wv.addEventListener(n, fn);
 		}
